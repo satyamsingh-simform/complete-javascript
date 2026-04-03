@@ -1,0 +1,45 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+body{
+    display: flex;
+    justify-content: center;
+    height: 500px;/*height:100% use krna hai to html ka v height ko 100% set krna hoga*/
+    align-items: center;
+}
+
+.container{
+    width: 370px;
+    height: 370px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* align-items: center; */
+    /* align-self: center; */
+
+}
+
+.board{
+    width: 370px;
+    height: 370px;
+    background-color: aqua;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    padding-left: 15px;
+
+
+}
+.cell{
+    width: 100px;
+    height: 100px;
+    background-color: blueviolet;
+    border: 2px solid black;
+    box-sizing: border-box;
+    margin-right: 10px;
+
+
+}

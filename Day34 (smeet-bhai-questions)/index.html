@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript practice</title>
+
+    <style>
+        .container{
+            height: 100vh;
+            width: 100vw;
+            background-color: rgb(158, 202, 224);
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container"></div>
+
+
+
+    <script>
+
+        // alert
+        alert("hello you are using javascript also")
+
+        //prompt
+        let first_name=prompt("enter your first name:");
+        let last_name=prompt("enter your last name:")
+        console.log(first_name);
+        console.log(last_name);
+        console.log(`full name:${first_name}${last_name}`);
+
+        //confirm
+        let result=confirm("are you sure you want to delete");
+        if(result){
+            alert("you clicked ok that means it will delete the file");
+            console.log("deleted");
+        }
+        else{
+            console.log("cancelled the deletion process");
+        }
+
+    </script>
+
+</body>
+</html>
