@@ -48,8 +48,134 @@
     -Clears all input fields
     -event.target → whole form
     -Input values become empty / undefined
-
 */
+
+/*//Clipboard Events
+
+1. cut
+    - Fires when user cuts content (Ctrl + X / right-click cut)
+    - Removes selected content from input/textarea
+    - Data goes to clipboard
+    - Can be prevented using event.preventDefault()
+    - Used for restricting cut or tracking user actions
+
+2. copy
+    - Fires when user copies content (Ctrl + C / right-click copy)
+    - Does NOT remove content
+    - Copies selected text to clipboard
+    - Can modify copied data using clipboardData
+    - Used for custom copy behavior
+
+3. paste
+    - Fires when user pastes content (Ctrl + V / right-click paste)
+    - Inserts clipboard data into input/textarea
+    - Access pasted data using event.clipboardData
+    - Can prevent paste using event.preventDefault()
+    - Used for validation (e.g., restrict special characters)
+
+4.event.clipboardData.getData("text")
+    Comes from Clipboard Event API
+    Available ONLY inside event handlers
+        -paste
+        -copy
+        -cut
+*/
+
+const form = document.querySelector('form');
+
+form.addEventListener("cut", (event) => {
+    console.log("CUT event");
+    console.log(event.target);          // which input triggered
+    console.log(event.target.value);    // value before cut
+});
+
+form.addEventListener("copy", (event) => {
+    console.log("COPY event");
+    console.log(event.target);          
+    console.log(event.target.value);    
+});
+
+form.addEventListener("paste", (event) => {
+    console.log("PASTE event");
+    console.log(event.target);          
+    console.log(event.target.value);    // value before paste
+
+    let pastedData = event.clipboardData.getData("text");
+    console.log("Pasted Data:", pastedData);
+});
+
+
+/*
+🔹 Mouse Events
+
+// Basic 
+1. click
+    - Fires on single click
+    - Most commonly used mouse event
+    - Triggers after mousedown + mouseup
+    - Used for buttons, UI interactions
+
+2. dblclick
+    - Fires on double click
+    - Requires two rapid clicks
+    - Used for special actions (edit, zoom, etc.)
+
+3. mousedown
+    - Fires when mouse button is pressed
+    - Triggers before click
+    - Used for drag start, press detection
+
+4. mouseup
+    - Fires when mouse button is released
+    - Completes click cycle
+    - Used for drag end or release actions
+
+
+Movement 
+5. mousemove
+    - Fires continuously when mouse moves
+    - High frequency event
+    - Used for tracking cursor position, drag
+
+6. mouseover
+    - Fires when pointer enters element
+    - Bubbles to parent elements
+    - Triggers again when entering child elements
+
+7. mouseout
+    - Fires when pointer leaves element
+    - Bubbles
+    - Also fires when moving into child elements
+
+8. mouseenter
+    - Fires when pointer enters element
+    - Does NOT bubble
+    - Fires only once (not on child enter)
+
+9. mouseleave
+    - Fires when pointer leaves element
+    - Does NOT bubble
+    - Cleaner alternative to mouseout
+
+
+Right Click
+10. contextmenu
+    - Fires on right-click
+    - Opens browser context menu
+    - Can be prevented using event.preventDefault()
+    - Used for custom right-click menus
+
+
+Wheel
+11. wheel
+    - Fires on mouse scroll
+    - Gives scroll direction and amount (deltaY)
+    - Used for zoom, scroll tracking
+*/
+
+
+
+
 
 
 /*//diff diff form event type //pura form event smjh liye
@@ -141,25 +267,25 @@ form.addEventListener('submit',(evt)=>{
 */
 
 //efficient way
-let form=document.querySelector('form');
-form.addEventListener('submit',(evt)=>{
-    evt.preventDefault();
+// let form=document.querySelector('form');
+// form.addEventListener('submit',(evt)=>{
+//     evt.preventDefault();
 
-    //ye ek fn hai (actual me API hai) js ka jisme sara form ka submitted data aata hai
-    let data=new FormData(form);
-    console.log(data)
-    console.log(data.keys)
+//     //ye ek fn hai (actual me API hai) js ka jisme sara form ka submitted data aata hai
+//     let data=new FormData(form);
+//     console.log(data)
+//     console.log(data.keys)
 
-    console.log(Array.from(data.keys()));
-    console.log(Array.from(data.values()));
-    console.log(Array.from(data.entries()));//convert to array format
+//     console.log(Array.from(data.keys()));
+//     console.log(Array.from(data.values()));
+//     console.log(Array.from(data.entries()));//convert to array format
 
-    let arrForm=Array.from(data.entries())
-    for(let [key,val] of arrForm){
-        console.log(key,val);
-        let div=document.getElementById('result');
-        div.innerText=`${key} : ${val}`;
-    }
+//     let arrForm=Array.from(data.entries())
+//     for(let [key,val] of arrForm){
+//         console.log(key,val);
+//         let div=document.getElementById('result');
+//         div.innerText=`${key} : ${val}`;
+//     }
     /*
     let dataArr=Array.from(data.entries());
     for(let val of dataArr){
@@ -167,7 +293,7 @@ form.addEventListener('submit',(evt)=>{
     }
     */
 
-})
+// })
 
 
 /**
