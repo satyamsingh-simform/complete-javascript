@@ -1,106 +1,104 @@
-/*let boxes = document.querySelectorAll('.box');
-let score = document.getElementById('score');
+alert('you have 60 second to complete the game');
 
-// actual values
-let values = ["1", "1", "2", "2"];
+let arrEmojis = ["😀","😀","🥳","🥳","🎁","🎁","🎊","🎊","🎈","🎈","👏","👏","🏆","🏆","🐇","🐇"];
+let emojiShufle = arrEmojis.sort(() => (Math.random() - 0.5));
 
-let firstValue = null;
-let secondValue = null;
-let scoreValue = 0;
+let all_P=document.querySelectorAll('.item');
+let reset=document.getElementById('reset');
+let moveDetail=document.querySelector('.detail')
+let time=document.querySelector('.time')
+let msg=document.querySelector('.msg')
 
-// hide all values initially
-boxes.forEach((box) => {
-    box.innerText = "click me to check";
-});
 
-boxes.forEach((box, index) => {
-    box.addEventListener('click', () => {
+all_P.forEach((p,index)=>{
+    p.innerText=emojiShufle[index];
+})
 
-        // show value
-        box.innerText = values[index];
+let first=null;
+let second=null;
+let lock=false;
 
-        if (firstValue === null) {
-            firstValue = values[index];
-        } else {
-            secondValue = values[index];
+let move=0;
+let sec=0;
 
-            // compare
-            if (firstValue === secondValue) {
-                scoreValue++;
-                score.innerText = "Score: " + scoreValue;
-            }
 
-            // reset
-            firstValue = null;
-            secondValue = null;
+function resetFunc(){
+    first=null;
+    second=null;
+    lock=false;
+}
+
+all_P.forEach((p,index)=>{
+    p.addEventListener('click',()=>{
+        if(lock) return;
+        if(p===first) return;
+
+        p.classList.add('flipped')
+        if(!first){
+            first=p;
         }
-    });
-});
-*/
-
-let boxes = document.querySelectorAll('.box');
-let score = document.getElementById('score');
-let winner = document.getElementById('win');
-
-
-let values = ["1", "1", "2", "2"];
-
-let firstBox = null;
-let secondBox = null;
-let scoreValue = 0;
-let count=0;
-
-boxes.forEach((box) => {
-    box.innerText = "?";
-});
-
-boxes.forEach((box, index) => {
-    box.addEventListener('click', () => {
-
-        // ignore if already matched
-        if (box.classList.contains('matched')) return;
-
-        box.innerText = values[index];
-
-        if (firstBox === null) {
-            console.log("box",box);
-            firstBox = box;
-        } else {
-            console.log(box);
-            secondBox = box;
-
-            // same box click
-            if (firstBox === secondBox) return;
-
-            let firstValue = values[[...boxes].indexOf(firstBox)];
-            let secondValue = values[index];
-
-            if (firstValue === secondValue) {
-                scoreValue++;
-                score.innerText = "Score: " + scoreValue;
-                checkWinner();
-                // mark matched
-                firstBox.classList.add('matched');
-                secondBox.classList.add('matched');
+        else{
+            second=p;
+            lock=true;
+            //Execution is top → bottom, and independent if blocks ALWAYS run (unless you stop them with return, throw
+            if(first.innerText===second.innerText){
+                first.classList.add('matched');
+                second.classList.add('matched');
+                resetFunc();
+                checkWin();
+                totalMove();
             }
-
-            firstBox = null;
-            secondBox = null;
+            else{
+                setTimeout(()=>{
+                    first.classList.remove('flipped');
+                    second.classList.remove('flipped');
+                    resetFunc();
+                    totalMove();
+                },1000)
+            }
         }
+
         
-    });
-});
-function checkWinner(){
-    boxes.forEach((box)=>{
-        console.log(count);
-        if(box.classList.contains('matched')){
-            count++;
-            console.log(count);
-        }
-        if(count==2){
-            winner.innerHTML='<h3>You WON</h3>'
-            console.log(count);
+    })
+})
 
+reset.addEventListener('click',()=>{
+    location.reload();
+})
+
+let clear=setInterval(()=>{
+    sec++;
+    time.innerHTML=`<strong>Total time:${sec}</strong>`;
+    if(sec==60){
+        all_P.forEach((p)=>{
+            p.classList.add('disabled');
+            msg.innerHTML=`
+                <p class="try-again">Try again</p>
+                <strong>Time limit hit</strong>
+            `
+            clearInterval(clear)
+        });
+    }
+},1000)
+
+function checkWin(){
+    let count=0
+    all_P.forEach((p)=>{
+        console.log(p.classList.contains('matched'));
+        if(p.classList.contains('matched')){
+            count++
+            console.log(count);
         }
     })
+    if(count==16){
+        clearInterval(clear);
+        msg.innerHTML=`<strong class="won">YOU WON</strong>`
+        console.log(`you took total ${move} move to win this game`);
+        console.log('winner');
+    }
+}
+
+function totalMove(){
+    move++;
+    moveDetail.innerHTML=`<strong>Total Move:${move}</strong>`;
 }

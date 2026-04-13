@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>broadcast</title>
+</head>
+<body>
+    <h1>Hello setting page</h1>
+    <script>
+        let channel=new BroadcastChannel('my_channel');
+        channel.onmessage=(e)=>{
+            console.log(e.data);
+        }
+    </script>
+</body>
+</html>
