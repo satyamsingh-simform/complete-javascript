@@ -40,7 +40,6 @@ all_P.forEach((p,index)=>{
         else{
             second=p;
             lock=true;
-            //Execution is top → bottom, and independent if blocks ALWAYS run (unless you stop them with return, throw
             if(first.innerText===second.innerText){
                 first.classList.add('matched');
                 second.classList.add('matched');
@@ -57,8 +56,6 @@ all_P.forEach((p,index)=>{
                 },1000)
             }
         }
-
-        
     })
 })
 
@@ -66,6 +63,7 @@ reset.addEventListener('click',()=>{
     location.reload();
 })
 
+//handle time logic
 let clear=setInterval(()=>{
     sec++;
     time.innerHTML=`<strong>Total time:${sec}</strong>`;
@@ -81,6 +79,7 @@ let clear=setInterval(()=>{
     }
 },1000)
 
+//win check
 function checkWin(){
     let count=0
     all_P.forEach((p)=>{
@@ -98,6 +97,7 @@ function checkWin(){
     }
 }
 
+//move count
 function totalMove(){
     move++;
     moveDetail.innerHTML=`<strong>Total Move:${move}</strong>`;
