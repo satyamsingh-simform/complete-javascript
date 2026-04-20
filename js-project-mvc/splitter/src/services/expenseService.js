@@ -7,7 +7,7 @@ export class ExpenseService {
         this.userService = userService;
     }
 
-    addExpense(paidBy, amount, description) {
+    addExpense(paidBy, amount, description){
         if (!this.userService.hasUser(paidBy)) {
             throw new Error('User does not exist');
         }

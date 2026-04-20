@@ -41,25 +41,6 @@ export class ExpenseUI {
         this.elements.simplifyBtn.addEventListener("click", () =>
             this.handleSimplify()
         );
-        this.elements.exportBtn.addEventListener("click", () =>
-            this.handleExport()
-        );
-        this.elements.importFile.addEventListener("change", (e) =>
-            this.handleImport(e)
-        );
-
-        // Add click event for export button to trigger file input
-        this.elements.exportBtn.addEventListener("click", (e) => {
-            // Check if it's the export functionality or import trigger
-            if (e.target.dataset.action === "Export") {
-                this.handleExport();
-            }
-        });
-
-        // Add import button functionality
-        this.elements.importBtn.addEventListener("click", (e) => {
-            this.elements.importFile.click();
-        });
     }
 
     async handleAddUser(e) {
@@ -126,35 +107,6 @@ export class ExpenseUI {
         } catch (error) {
             showErrorToast(`Error simplifying expenses: ${error.message}`);
             console.error("Error simplifying expenses:", error);
-        }
-    }
-
-    handleExport() {
-        try {
-            this.storageService.exportData();
-            showSuccessToast("Data exported successfully");
-        } catch (error) {
-            showErrorToast(`Export failed: ${error.message}`);
-            console.error("Export error:", error);
-        }
-    }
-
-    async handleImport(e) {
-        try {
-            const file = e.target.files[0];
-            if (!file) return;
-
-            await this.storageService.importData(file);
-            this.refreshUI();
-
-            showSuccessToast("Data imported successfully");
-            console.log("Data imported successfully");
-        } catch (error) {
-            showErrorToast(`Import failed: ${error.message}`);
-            console.error("Import error:", error);
-        } finally {
-            // Reset file input
-            e.target.value = "";
         }
     }
 
