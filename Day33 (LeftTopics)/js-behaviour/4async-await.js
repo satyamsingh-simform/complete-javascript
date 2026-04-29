@@ -242,5 +242,5 @@ async function userDetail(params) {
     // const chat = await fetch("chat");
 
     //now all 3 call will happen in parallel
-    const [comment,photo,chat]= Promise.all([fetch('userComment'),fetch('userPhoto'),fetch('chat')]);
+    const [comment,photo,chat]=await Promise.all([fetch('userComment'),fetch('userPhoto'),fetch('chat')]);
 }
