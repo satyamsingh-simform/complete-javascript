@@ -15,12 +15,12 @@
 // console.log(user["home address"]);
 // console.log(typeof user);
 // CRUD operation: Create read update delete
-
-
 // console.log(user.age);
 
-//  update
+//create
 // user.aadhar = 1234;
+
+//  update
 // user.amount = 5000;
 
 // console.log(user);
@@ -83,7 +83,6 @@
 
 // for(let [keys,values] of Object.entries(user)){
 //     console.log(keys, values);
-
 // }
 
 
@@ -100,35 +99,36 @@
 // console.log(userName,userAge);
 // console.log(first,second);
 
+/*
+const user = {
+   name: "Rohit",
+   age: 20,
+   emailId: "negi@gmail.com",
+   amount: 3400,
+   greeting: function(){
+    console.log(`Strike is coming on 18 october ${this.name}`);
+    return 20;
+   }
+}
 
-// const user = {
-//    name: "Rohit",
-//    age: 20,
-//    emailId: "negi@gmail.com",
-//    amount: 3400,
-//    greeting: function(){
-//     console.log(`Strike is coming on 18 october ${this.name}`);
-//     return 20;
-//    }
-// }
-
-// const user2 = {
-//     name:"Mohan",
-//     account:201,
-//      greeting: function(){
-//     console.log(`Strike is coming on 18 october ${this.name}`);
-//     return 20;
-//    }
-// }
+const user2 = {
+    name:"Mohan",
+    account:201,
+    greeting: function(){
+     console.log(`Strike is coming on 18 october ${this.name}`);
+     return 20;
+   }
+}
 
 // user2.greeting = user.greeting;
 
-// user2.greeting();
-// const va = user.greeting();
-// console.log(va);
+user2.greeting();
+const va = user.greeting();
+console.log(va);
+*/
+
 
 // nested object
-
 // const user = {
 //    name: "Rohit",
 //    age: 20,
@@ -176,4 +176,4 @@
 //     3: 40
 // }
 
-console.log(user[sym]);
+// console.log(user[sym]);

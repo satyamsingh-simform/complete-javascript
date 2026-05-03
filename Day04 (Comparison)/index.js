@@ -71,7 +71,7 @@ console.log(NaN==NaN);//F
 */
  
 console.log('good question');
-console.log(undefined!=null); //Homework
+console.log(undefined!=null); //Homework//false
 
 
 //logical comparison && || !
@@ -81,6 +81,7 @@ console.log(undefined!=null); //Homework
 let age = 18;
 let money =420;
 console.log(age<18 && money>200);//F-dono T tb hi T hoga //
+console.log('ans:','hi' && '100');//100
 
 console.log(age>100 || money>200)//T-ek v T tb T ho jayega
 console.log( !(age>10));//F

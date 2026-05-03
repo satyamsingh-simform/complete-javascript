@@ -53,30 +53,29 @@ console.log(obj2);
 
 
 //real life eg how writable is useful-accountNo. & name both should not be changed so make its writable:false
-/*
-const customer = {
+const customer11 = {
     name:"rohit",
     age:23,
     account_number:30001
 };
-Object.defineProperty(customer, 'account_number',{
+Object.defineProperty(customer11, 'account_number',{
     writable:false
 })
-Object.defineProperty(customer, 'name',{
+Object.defineProperty(customer11, 'name',{
   writable:false
 })
-customer.account_number = 20001;//will not allow this action to perform
-console.log(customer.account_number);//3001
-*/
+customer11.account_number = 20001;//will not allow this action to perform
+console.log(customer11.account_number);//3001
+
 
 //understanding enumarable- how it works
-/*
-const customer = {
+
+const customer1 = {
   name:"rohit",
   age:23,
   account_number:30001
 };
-let customer2 = Object.create(customer);
+let customer2 = Object.create(customer1);
 customer2.city = "Haridwar";
 customer2.place = "Delhi";
 
@@ -92,11 +91,10 @@ console.log();
 for(let key in customer2){
   console.log(`${key}`); //city place name age // aab account_number visible hi nhi hi kyuki uska e_able: false set kr diye hai
 }
-*/
+
 
 
 //Object.prototype ka .toString key ka enumerable ka value dekho tb pata lagega ki o false set hai isliye usko print nhi kr pa rahe hai
-/*
 const customer = {
   name:"rohit",
   age:23,
@@ -106,13 +104,21 @@ for(let key in customer)
   console.log(key);//name age account_number
 
 console.log(Object.getOwnPropertyDescriptor(Object.prototype , 'toString'));
+/*
+{
+  value: [Function: toString],
+  writable: true,
+  enumerable: false,
+  configurable: true
+}
+*/
 Object.defineProperty(Object.prototype,'toString',{
     enumerable:true,
 } )
 
 for(let key in customer)
     console.log(key);//name age account_number toString
-*/
+
 /*
 {
   value: [Function: toString],

@@ -23,7 +23,7 @@ When you write:
 /*Fn expression NEED TO BE PASSED LIKE THIS ONLY
 function names(fun){
     console.log("Hello I am name");
-    fun();//TypeError: fun is not a function-->bcz of line 26
+    fun();//TypeError: fun is not a function-->bcz of line 32
 }
 let greet = function (){
     console.log("I am call Back Function");
@@ -72,7 +72,7 @@ names(()=>{                                                                     
 //use case of callback fn  :-setInterval(callback,time);
 //setInterval is a built-in JavaScript function that 
 //repeatedly executes a function after a specified time interval (in milliseconds) until stopped
-/*
+
 function fetchData(){
     console.log("I am fetching data as normal fn");
 }
@@ -81,16 +81,14 @@ function fetchData(){
 setInterval(()=>{
     console.log("I am fetching data as arrow fn");
 },2000);
-*/
 
 
 //use case of callback fn  :-setTimeout(callbackFunction, delay); 
 //The function to execute after the delay.
 //setTimeout always runs only once unless explicitly called again.
-/*
 setTimeout(() => {
     console.log("This runs only once after 3 seconds!");
 }, 3000);
 
-*/
+
 

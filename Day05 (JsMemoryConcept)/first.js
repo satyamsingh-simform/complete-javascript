@@ -15,6 +15,12 @@
           bcz-let x=10;  4Byte
               x="x ka value ko update krke string v daal skte hai";  4Byte se boht jayda space lega isliye isko new mem denge 
 
+    -immutable
+        -Primitives are immutable → their values cannot be changed
+        -Reassignment creates a new value binding
+        -Immutability applies to values, not variables  
+        -Memory handling is internal to the JS engine
+
     2.Heap
         The heap is a large memory region used for storing objects and reference types.
         Objects, arrays, and functions are stored in the heap because their sizes are dynamic(data stored in heap are mutable bcz of this) and unpredictable.
@@ -30,11 +36,11 @@ let a = 10;
 a="satyam and abhi is frnd";//aisa lg raha hai a ko modify kr pa rahe hai ,but a ko new memory mila hai jisme ye string gaya 
 console.log(a);
 
-a=20;
-let b = a; //primitive data type are pass by value.     //non-primitive data type are pass by reference.
-b = 30;     //b me val 30 gaya pr new mem space mila hai b ko
-console.log(b);//b ka value update krne se a ka val update nhi hoga kyuki primitive are pass by value.
-console.log(a);
+// a=20;
+// let b = a; //primitive data type are pass by value.     //non-primitive data type are pass by reference.
+// b = 30;     //b me val 30 gaya pr new mem space mila hai b ko
+// console.log(b);//b ka value update krne se a ka val update nhi hoga kyuki primitive are pass by value.
+// console.log(a);
 
 // Object example:
 let obj1 = {

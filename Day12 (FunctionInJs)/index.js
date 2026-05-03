@@ -81,7 +81,7 @@ console.log(cube(8));
 // Here ...number is used in function parameters, which means:
 // Collect all incoming arguments and store them into a single array
 // That is exactly what rest operator does.
-
+*/
 const sum = function(...number){
     // for loop sum nikal sakta hu
    console.log(number);
@@ -89,21 +89,34 @@ const sum = function(...number){
 sum(2,3,4);//[ 2, 3, 4 ]
 sum(4,6,1,10,13);//[ 4, 6, 1, 10, 13 ]
 sum(2,3);//[ 2, 3 ]
-*/
+sum([1,2,3,4])//[ [ 1, 2, 3, 4 ] ]
+let arr = [2,3,4,5];
+sum(...arr)//[ 2, 3, 4, 5 ]
 
+const sumArr = function([...number]){
+    // for loop sum nikal sakta hu
+   console.log('behav:',number);
+}
+sumArr([1,2,3,4]) //behav: [ 1, 2, 3, 4 ] //[ [ 1, 2, 3, 4 ] ] not this 
+// sumArr(1,2,3,4)//error fn argument has to be arr
 
 
 let obj = {
     name: "Rohit",
     age:30,
     amount:420,
+    add:{
+        city:'jsr',
+        road:10,
+    }
 }
 const {name , amount} = obj;//destructuring obj
 //console.log(name,amount);
 //Homework pass by value or pass by reference
 
-function fun({name, age}){
-   console.log(name , age);
+function fun({name, age, ...rest}){
+   console.log(name , age);//Rohit 30
+   console.log('rest:',rest);//rest: { amount: 420, add: { city: 'jsr', road: 10 } }
 }
 fun(obj);
 

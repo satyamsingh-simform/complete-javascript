@@ -3,6 +3,8 @@
     -synchronous language:ek ke baad ek execute hoga
     -but js can be behave asynchronous with the help of web API fn like(setTimeout, eventListener etc which take cllback fn and 
     send it to web API to handle them and js will continue the further execution) which are not part of js instead are part of web API
+    -doubt-but bcz of this asynchronous behaviour of js it caused one issue sometimes we want our code to execute in order ,but it is not possible 
+    bcz in js asynchronous added to not make js to wait ,So now to maintain the order we have concept of promise, async-await, callback hell
 */
 
 /*JavaScript Synchronous Behavior
@@ -64,6 +66,6 @@ console.log("30");
 //output:10  20  30 ->ye synchronous task hi hai  
 console.log("10");
 const timer = Date.now();
-while(Date.now()-timer<2000){}  //here js will wait this is called js blocking(synchronous) nature
+while(Date.now()-timer<2000){}  //here js will wait bcz while loop is js core part, it cant be send to web api, this is called js blocking(synchronous) nature
 console.log('20');
 console.log("30");

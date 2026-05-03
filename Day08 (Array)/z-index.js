@@ -71,11 +71,13 @@
 // console.log(arr);
 
 
-// const arr = [10,30,50,90,11];
+const arr = [10,30,50,90,11];
 // const arr2 = arr.slice(2,4);
-// console.log(arr);
-// const arr3 = arr.splice(1,3,"Rohit",19);
-// console.log(arr3);
+console.log(arr);
+const arr3 = arr.splice(1,3,"Rohit",19);//splice return the deleted el //change the og arr
+console.log(arr3);
+console.log(arr);//[ 10, 'Rohit', 19, 11 ]
+
 
 // const arr = [10,30,50,90,11];
 // const arr2 = ["Rohit",11,true];
@@ -138,4 +140,14 @@
 
 const a = [10,309,"Rohit",9.3, true];
 a.name = "Moahn";
-console.log(a);
+console.log(a);//[ 10, 309, 'Rohit', 9.3, true, name: 'Moahn' ]
+
+//for of loop will not print the object like value bcz it ignores obj key
+for(let val of a){
+    console.log(val);
+}
+
+//it prints it all key 
+for(let val in a){
+    console.log(val);
+}

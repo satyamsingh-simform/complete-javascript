@@ -49,6 +49,8 @@ for(let val of str){
     console.log(val);    
 }   
 */
+
+
 /*
 // don't use for of loop with object-->ye error de dega-> TypeError: obj is not iterable
 const obj = {
@@ -61,6 +63,7 @@ for(let value of obj){
     console.log(value);//TypeError: obj is not iterable
 }
 */    
+
 /*
 //fir v use krna hai t0 ye tarika se kr skte hai
 const obj = {
@@ -72,8 +75,8 @@ for(let key of Object.keys(obj))
     console.log(`${key}:${obj[key]}`);
 */
 
-////CALLBACK FUNCTION-->2call.js file me hai
 
+////CALLBACK FUNCTION-->2call.js file me hai
 
 /*forEach LOOP:(ek cllback fn ko expect krta hai)
     -used for array iteration only.  forEach() is used when you want to perform an action on every element of an array.
@@ -185,6 +188,8 @@ console.log(a,b);//obj hai isme
     -In JavaScript, return can only return expressions (values) such as literals, variables, operations, function calls, assignments, objects, arrays, 
     or ternary expressions, but it cannot return declarations or statements like let, const, var, function, class, if, for, or while.
 */
+
+
 //MAP
 // map:isme value ko modify kr skte hai but filter me sirf yes no se filter out krwa skte hai
 //map() always returns a new array of the SAME length, with modified values.

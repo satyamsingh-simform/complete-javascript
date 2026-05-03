@@ -2,7 +2,7 @@
 RAM is where a program is loaded and executed.
    -Within RAM:
       a. Stack:
-         -Used for managing function calls and local variables.
+         -Used for managing function calls and primitive variables.
          -Primitive values (e.g., number, boolean, undefined, null, symbol, bigint) are stored directly on the stack.
          
       b. Heap:
@@ -76,7 +76,7 @@ console.log(abc());
 
 
 // Type conversion
-/*
+
 //1.string convert to number
 console.log("start hua string conversion");
 let account_balance = "100";
@@ -88,6 +88,7 @@ let account = "100xs";
 let bal = "200s"
 console.log(Number(account));//NaN
 console.log(Number(bal));//NaN
+console.log('NaN:',typeof NaN);//number
 
 
 //Boolean convert to number
@@ -95,7 +96,7 @@ let x1 = false;
 let x7=true;
 console.log(Number(x1));//0
 console.log(Number(x7));//1
-*/
+
 /*
 // null
 console.log("Null conversion");

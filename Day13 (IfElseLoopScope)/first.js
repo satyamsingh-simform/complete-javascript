@@ -14,7 +14,7 @@ function greet1(){
 }
 greet1();*/
 
-//local Scope-jis fn me declare kiye hai sirf usse fn me iska variable access kr skte hai uske bahar error dega
+//functional Scope-jis fn me declare kiye hai sirf usse fn me iska variable access kr skte hai uske bahar error dega
 function greet(){
     let a = 10;
     var b = 20;
@@ -41,6 +41,7 @@ if(true){
  console.log(b);//var ko access kr pa rahe hai outside block v- isse wajh se var is prefered not to be used
 
 /*problm with var variable
+    -it does not respect block scope.
     -isko redeclare v kr skte hai.
     -isko declare se phele v use kr skte hai-kaise possible hai to reason hoisting me milega
 */

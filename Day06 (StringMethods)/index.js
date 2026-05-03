@@ -23,7 +23,7 @@ let obj2 = {
     id:20,
     money:30
 };
-obj = obj2;//ye error dega kyuki abb obj ko change kr rahe hai jo ki const var hai
+obj = obj2;//ye error dega kyuki abb obj ka reference ko change kr rahe hai jo ki const var hai
             //or ohi const ke place pe let hota to ye krna v possible tha
 //location of obj2 is 8000
 //location of obj is 6521
@@ -188,7 +188,8 @@ console.log(str10);//original as it is rehega
 
 //let str11 = "Money! honey! sunny funny";//[ 'Money', 'honey', 'sunny funny' ]
 let str11 = "Money! honey! sunny! funny";//[ 'Money', 'honey', 'sunny, 'funny' ]
-console.log(str11.split("! "));//convert kr dega array me//[ 'Money', 'honey', 'sunny', 'funny' ]
+console.log(str11.split("!"));//convert kr dega array me//[ 'Money', 'honey', 'sunny', 'funny' ]
+console.log(str11.split(" "));//convert kr dega array me//[ 'Money!', 'honey!', 'sunny!', 'funny' ]
 
 let str12 = " hello ji ";
 console.log(str12.length);//10

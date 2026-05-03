@@ -100,6 +100,16 @@ export class ExpenseUI {
         }
     }
 
+    renderExpense(expense) {
+        const text =
+            expense.description !== "No description"
+                ? `${expense.paidBy} paid ₹${expense.amount} for ${expense.description}`
+                : `${expense.paidBy} paid ₹${expense.amount}`;
+
+        const listItem = DOMHelpers.createListItem(text, "expense-item");
+        this.elements.paymentList.appendChild(listItem);
+    }
+
     handleSimplify() {
         try {
             const results = this.expenseService.simplifyExpenses();
@@ -115,15 +125,7 @@ export class ExpenseUI {
         this.elements.expenseUserInput.add(option);
     }
 
-    renderExpense(expense) {
-        const text =
-            expense.description !== "No description"
-                ? `${expense.paidBy} paid ₹${expense.amount} for ${expense.description}`
-                : `${expense.paidBy} paid ₹${expense.amount}`;
-
-        const listItem = DOMHelpers.createListItem(text, "expense-item");
-        this.elements.paymentList.appendChild(listItem);
-    }
+    
 
     displayResults(results) {
         DOMHelpers.clearElement(this.elements.resultArea);

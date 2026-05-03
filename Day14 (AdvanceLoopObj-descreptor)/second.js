@@ -31,7 +31,7 @@ name
 age
 */
 
-//normal loop string var ko print hi nhi krega but ohi for in loop usko v print kr deta hai
+//normal loop and for of loop string var ko print hi nhi krega but ohi for in loop usko v print kr deta hai
 for(let i=0; i<arr.length; i++){
     console.log(`${i}:${arr[i]}`);   
 }
@@ -43,11 +43,15 @@ for(let i=0; i<arr.length; i++){
 4:30
 */
 
+for(let val of arr){
+    console.log(val);
+}
+/*
+10
+20
+40
+12
+30
 
-
-
-//  defineProperty
-// defineProperties
-
-
+*/
 

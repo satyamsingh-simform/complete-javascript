@@ -1,5 +1,3 @@
-
-/*
 //creating object
 let obj11={
     Username:"singhsatyam",
@@ -7,19 +5,25 @@ let obj11={
     followers:200,
     following:100,
     like:"1k",
+    "is-admin":true,
 }
 console.log(obj11);
+console.log(obj11.Username);//singhsatyam
+console.log(obj11['Username']);//singhsatyam
+// console.log(obj11[Username]);//error
+
 obj11.Username="singhsatyam8409";//updation in obj is done like this
+obj11["is-admin"]=false;
 console.log(obj11);
 delete obj11.like;//delete operation on object
 console.log(obj11);
-*/
+
 
 
 
 /*
 //what object{key(can be no. also, key can be put in "" also, key can also be keyword of js):value Pair} can contain
-//          object does not need data type to be mentioned ,direct key:value ,no let const var needed for key if does it will give error.
+//          object does not need keyword(let const var) to be mentioned ,direct key:value ,no let const var needed for key if does it will give error.
 const obj = {
    0:20,
    1:50,
@@ -40,7 +44,6 @@ console.log(obj['0']);//20
 console.log(obj[1]);//50
 console.log(obj[2]);//70
 console.log(obj[3]);//undefined
-
 //console.log(obj.2);//is tarika se access nhi kr skte hai no.wale key ko
 
 console.log(obj["Uname"]);
@@ -143,7 +146,7 @@ console.log(arr2);//gives 2d array
 
 
 
-////Object.assign({},obj1,obj2):-used to create a copy of object
+////Object.assign({},obj1,obj2):-used to create a copy/merge of object
 /*
 //assign({}, obj1, obj2, obj3,...)- use to combine two or more object
 //{}-source obj bolte hai isme hi change hoke jayega
@@ -167,8 +170,8 @@ console.log(obj14);//{ a: 3, b: 4 }
 */
 
 /*
-//spread operator-create a copy of obj
-//2nd method to combine objects:-using spread operator  :const obj50 = {...obj41,...obj42,...obj43};
+//spread operator-create a copy/combine of obj
+//2nd method to combine/copy objects:-using spread operator  :const obj50 = {...obj41,...obj42,...obj43};
 const obj41={
     a:10,
     b:20,

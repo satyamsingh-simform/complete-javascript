@@ -79,6 +79,8 @@ console.log(arr);
 let a = arr.slice(2,5);//last index excluded hai
 console.log(a);//[ 3, 4, 5 ]
 console.log(arr);//[ 1, 2, 3, 4, 5, 'satya', 'abhijeet', 'aman' ]
+//sirf start pass krege to end arr.length lelega
+console.log(arr.slice(5));//[ 'satya', 'abhijeet', 'aman' ]
 
 
 //arr.splice()-->jo v el splice ke range me aayega o og array me nhi rhega
@@ -136,3 +138,6 @@ console.log(Array.isArray(abc));
 // let ac = new Array(10);
 // console.log(ac.length);
 */
+
+let arr=[1,2,3,4,5,'satya','abhijeet','aman'];
+console.log(arr.slice(5));

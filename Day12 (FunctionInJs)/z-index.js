@@ -15,7 +15,7 @@
 // addNumber(3,4);
 // addNumber(6,7,8);
 // addNumber(6,7,8,9);
-// addNumber(7,8,12,12,11,12,41,12)
+// addNumber(7,8,12,12,11,12,41,12)//rest other parameter will be ignored , err nhi dega
 
 
 // REST OPERATOR:-now no need to fix the argument, rest will catch any no. of argument 
@@ -104,7 +104,7 @@ console.log(arr3);//[10, 20, 30, 40, 50, 30, 70, 90, 10]
 
 //RETURN an OBJECT from Fn as single line statement then both return and {} not needed but one parenthesis () is needed must to save from erro
 const greeting = ()=> ({ name:"Rohit",age:20,class:3});
-console.log(greeting());//{ name: 'Rohit', age: 20, class: 3 }
+// console.log(greeting());//{ name: 'Rohit', age: 20, class: 3 }
 
 
 // IIFE-Immediately Invoked Function Expression
@@ -113,9 +113,10 @@ console.log(greeting());//{ name: 'Rohit', age: 20, class: 3 }
 // })();
 
 //IIFE-Arrow Function
-// (()=>{
+// ((a,b)=>{
 //     console.log("hi");
-// })();
+//     console.log(a+b);
+// })(4,5);
 
 
 // 
@@ -163,98 +164,76 @@ payment(500,zomatoOrderPlaced);
 payment(300,blinkitOrderPlaced);
 */
 
-/*its parent scope = outer()
+/*//its parent scope = outer()
 function outer() {
   let x = 10;
-
   const arrow = () => {
     console.log(x);
   };
-
   arrow();
 }
-
 outer();
 
-*/
-
-/*Parent scope = Global scope
+//Parent scope = Global scope
 let x = 50;
-
 const arrow = () => {
   console.log(x);
 };
-
 arrow();
-*/
 
-/*Parent scope = block scope
+//Parent scope = block scope
 {
   let a = 20;
-
   const arrow = () => {
     console.log(a);
   };
-
   arrow();
 }
- */
+*/
 
-/*Parent scope of inner = outer arrow scope
+
+//Parent scope of inner = outer arrow scope
 const outer = () => {
   let x = 30;
 
   const inner = () => {
     console.log(x);
   };
-
   inner();
 };
 
 outer();
 
-*/
-
-
-/*Parent scope = printHobbies function
+//Parent scope = printHobbies function
 const user = {
   name: "Alice",
   hobbies: ["reading", "coding"],
-
+  greet(){
+    console.log('hi');
+  },
   printHobbies: function () {
-
     this.hobbies.forEach((hobby) => {
       console.log(`${this.name} likes ${hobby}`);
     });
-
   }
 };
-
 user.printHobbies();
 
-*/
 
-/*Parent scope = start() function
+//Parent scope = start() function
 function Stopwatch() {
   this.seconds = 0;
-
   this.start = function () {
-
     setInterval(() => {
       console.log(this.seconds);
       this.seconds++;
     }, 1000);
-
   };
 }
-
 const myWatch = new Stopwatch();
-myWatch.start();
+// myWatch.start();
 
-
-*/
-
-/*//Parent scope = Global Scope
+//Parent scope = Global Scope
 //Objects DO NOT create scope in JavaScript.
 const person = {
   name: "Alice",
@@ -269,7 +248,5 @@ const person = {
     console.log(`Hi, my name is ${this.name}`);
   }
 };
-
-person.sayHi();
-person.speak();
-*/
+person.sayHi();//Hi, my name is undefined
+person.speak();//Hi, my name is Alice

@@ -130,13 +130,20 @@ const obj = {
     amount:420,
     city: "kotdwar"
 }
-const arr=Object.keys(obj);
-for(let i=0;i<arr.length;i++){
-    console.log(obj[arr[i]]);
+const keyArr=Object.keys(obj)
+for(let i=0;i<keyArr.length;i++){
+    console.log(`${keyArr[i]}:${obj[keyArr[i]]}`);
+}
+for(let key of keyArr){
+    console.log(obj[key]);
+    console.log(obj["key"]);//undefined
+}
+for(let key in obj){
+    console.log(obj[key]);
 }
 
-
-//for in loop
+/*
+//traditional loop
 const val=Object.values(obj);//ye ek array dega obj ka value ka
 console.log(val);
 
@@ -150,7 +157,7 @@ for(let i=0;i<key.length;i++){
     // kotdwar
 }
 
-
+*/
 
 
 

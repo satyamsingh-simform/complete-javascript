@@ -30,7 +30,7 @@ for(let abc in obj1){
 /*
 console.log(`traditional method to iterate over obj`);
 //Object.keys(obj1)
-let arrKey=Object.keys(obj1);//[ 'name', 'age', 'gender', 'city' ] returns anarray of keys
+let arrKey=Object.keys(obj1);//[ 'name', 'age', 'gender', 'city' ] returns an array of keys
 for(let i=0; i<arrKey.length; i++){
     console.log(arrKey[i], obj1[arrKey[i]]);//obj1[name]=rohit
 }
@@ -41,7 +41,7 @@ for(let i=0; i<arrKey.length; i++){
 //     -prbm with for in loop
 //          -for in loop(ye wala method se inherited key ko v print kr dega)
 //          -it ignore the key which is Symbol.
-//          -Isko array ke sath nahi use krte hai
+//          -Isko array ke sath nahi use krte hai advicable
 //              -normal loop string key ko print hi nhi krega array ka but ohi for in loop usko v print kr deta hai
 //          -Yes. Order not guaranteed is also considered a problem with for...in.
 
@@ -63,10 +63,10 @@ for(let key in obj2){
     -reason:-kyuki unsabka enumerable:false set hai.
     -reason:-writable enumerable configurable-obj ka key value pair ke sath ye 3 attribute set hota hai
 
-//default value for this 
+//default value for Object prototype 
 writable:true
 enumerable:false
-configurable:false
+configurable:true
 
  writable   :   value ko kya mein change kar sakta hu :T-->yes:F-->No
  enumerable :   determine if the method(Object.prototype)(like .toString etc) will visible in operation like iteration or not :T->visible :F->not visible
