@@ -67,3 +67,42 @@ fetch(`http://api.weatherapi.com/v1/current.json?key=34028ea16323443288510060525
 .then(data=>console.log(data.current.temp_c ,"\n",data.current.temp_f))
 .catch(err=>console.log(err))
 
+
+
+/*<!--asynchronous call flow-->
+
+const p = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve("Promise Resolved Value!!");
+    }, 1000);
+});
+Correct flow:
+    -Promise executor runs immediately ✅
+    -setTimeout goes to Web API ✅
+    -After 1s → callback goes to callback queue (macrotask queue) ✅
+    -callback means this:() => {
+        resolve("Promise Resolved Value!!");
+    }
+    -Event loop moves it to call stack(if empty) → executes resolve(...)
+    -It changes promise state → fulfilled
+    -Then attached .then() callbacks go to microtask queue
+
+
+const p = new Promise((resolve, reject) => {
+    setTimeout(() => {
+       console.log('hi')
+    }, 1000);
+});
+Output:hi
+<!-- Reason: -->
+Promise executor runs immediately
+But you are NOT calling resolve or reject
+So promise stays in pending state forever
+
+<!-- Flow: -->
+setTimeout → Web API → callback queue
+After 1s → console.log('hi') runs
+Promise state = still pending
+.then() (if added) will never run
+
+*/

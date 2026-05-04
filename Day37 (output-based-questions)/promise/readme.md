@@ -56,6 +56,39 @@ Very Important Rule
     throw error inside .then() = Promise rejection
     .catch() returning value=Promise becomes fulfilled again    
 
+<!--asynchronous call flow-->
+const p = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve("Promise Resolved Value!!");
+    }, 1000);
+});
+
+Correct flow:
+Promise executor runs immediately ✅
+setTimeout goes to Web API ✅
+After 1s → callback goes to callback queue (macrotask queue) ✅
+Event loop moves it to call stack → executes resolve(...)
+It changes promise state → fulfilled
+Then attached .then() callbacks go to microtask queue
+
+
+const p = new Promise((resolve, reject) => {
+    setTimeout(() => {
+       console.log('hi')
+    }, 1000);
+});
+Output:hi
+<!-- Reason: -->
+Promise executor runs immediately
+But ❗ you are NOT calling resolve or reject
+So promise stays in pending state forever
+
+<!-- Flow: -->
+setTimeout → Web API → callback queue
+After 1s → console.log('hi') runs
+Promise state = still pending
+.then() (if added) will never run
+
 <!-- //Q0. -->
 Promise.resolve(1)
 .then(x => x + 1)
@@ -113,7 +146,7 @@ Promise.resolve(10)
 .then((data)=>{
     console.log(data); 
 })
-// console.log(data);  // data is not defined
+console.log(data);  // data is not defined //as it is out of the chain
 console.log(`i will run before the promise`);
 
 <!-- 1. .then() with no function
@@ -132,9 +165,9 @@ Promise.resolve(1)
 .then(3)
 .then((value) => value * 3)
 .then(Promise.resolve(4))
-.then(console.log)
+.then(console.log)              //Internally it becomes: (value) => console.log(value)
 
-
+op:6
 
 <!-- Point-wise
 Promise executor runs immediately
@@ -142,7 +175,7 @@ setTimeout is sent to Web API
 JS moves ahead (non-blocking)
 
 setTimeout → goes to Web API
-After delay → moves to Callback Queue
+After delay over→ moves to Callback Queue
 Event loop executes it → resolve() is called
 resolve():
 does NOT execute .then() immediately
@@ -174,7 +207,7 @@ const p1 = new Promise((resolve, reject) => {
 }); 
 
 p1.then((data)=>console.log(data));
-
+op:below me resolve and reject will not work!!
 
 
 <!-- //Q8 The executor fn of Promise runs when the Promise object is created, not when awaited. -->
@@ -191,7 +224,7 @@ async function greet(){
     const data2=await p1;//yaha pe ye wait nhi krega kyuki data already uper hi resolve ho chuka hai //myth ye hai ki dono parallel me chal raha hai isliye 
     console.log(data2);
 }
-// greet();
+greet();
 //same thing with promise
 p1.then(data=>console.log(data));
 p1.then(data=>console.log(data));
@@ -214,7 +247,7 @@ const p3=new Promise(function(resolve,reject){
 //yaha pe dono promise parallel me chal raha hai kyuki dono promise bhar hai isliye na ki await ke wajh se
 async function greet(){
     const data1=await p2;
-    console.log(data1);//yaha pe v dono me data ek sath hi aa jayega
+    console.log(data1);//yaha pe v dono me data ek sath hi aa jayega but neeche wala tb hi chalega jb upper wala resolved ho jayega
 
     const data2=await p3;
     console.log(data2);//yaha pe v dono me data ek sath hi aa jayega
@@ -270,7 +303,7 @@ function t2(){
 
 //yaha pe jo phele cll hua o run hoga uske execute hone ke baad dusra wala run hona start hoga
 async function greet(){
-    const data1=await t1();//phele iska data aayega
+    const data1=await t1();//phele iska promise resolve hoga ,neeche wala avi start v nhi hua hai
     console.log(data1);
 
     const data2=await t2();//fir 5 sec ke baad iska ,kyuki ye fn call hai jb tkk fn cll nhi hoga tb tkk promise executor run nhi hoga ,direct promise call rhta hai 
