@@ -8,7 +8,7 @@
         querySelectorAll()
         childNodes
     -Supports modern looping methods like forEach(), for...of, and normal for loop.
-
+    -need not to be converted into array befor looping.
 
   HTMLCollection
     -An HTMLCollection is a collection of only HTML elements (tags).
@@ -19,17 +19,24 @@
         getElementsByTagName()
         children
     -Does not support forEach() directly, so usually a for loop is used.
+    -Its array like ,which needs to be converted to array first using spread operator or using Array.from(collection)
 */
 
 /*
-stopPropagation()
+1.Event Propagation
+    -when an event occurs, it travels in 3 phases:
+        -Capturing phase (top → target)
+        -Target phase
+        -Bubbling phase (target → top)
 
-Only stops going to parent
-Same element → everything runs
+2.stopPropagation()
+    -event.stopPropagation() stops the event from moving further in the propagation flow (either capturing or bubbling).
+    -Prevents the event from reaching parent elements
+    -Does NOT stop other handlers on the same element
 
-👉 stopImmediatePropagation()
-
-Stops everything immediately
-Same element → next handlers blocked
-Parent → also blocked
+3.stopImmediatePropagation()
+    -event.stopImmediatePropagation() stops propagation AND prevents other handlers on the same element from executing
+    -Stops:
+        -Event going to parent
+        -Other listeners on the same element
 */

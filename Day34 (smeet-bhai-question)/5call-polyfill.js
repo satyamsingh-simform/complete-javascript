@@ -1,9 +1,9 @@
 
-/*WITHOUT SYMBOL:created key using obj which may overwrite the user key 
+//WITHOUT SYMBOL:created key using obj which may overwrite the user key 
 Function.prototype.myCall=function(context, ...arg){
     let context1=context;//context has obj person
     context1.fn=this;//this points to greet fn
-    context1.fn(...arg);
+    context1.fn(...arg);//spread fn hai
 }
 
 function greet(city){
@@ -14,9 +14,9 @@ const person={name:'Satya'}
 const person2={name:'Rajan'}
 
 // greet.call(person,'jsr');//. se phele ko this point krta hai
-greet.myCall(person,'jsr');
+greet.myCall(person,'jsr');//myCall is normal fn mtlb fn ke andar this jo usko call kiyahai usko point krega ,i.e., greet
 greet.myCall(person2,'jaipur');
-*/
+
 
 
 //WITH SYMBOL
@@ -36,3 +36,19 @@ const person2={name:'Rajan'}
 
 greet.myCall(person,'jsr');
 greet.myCall(person2,'jaipur')
+
+
+/*Pollyfill for bind */
+Function.prototype.myBind = function (context, ...arg) {
+    let context1 = context;        // context = object
+    context1.fn = this;            // this = function
+
+    return function (...newArg) {  // bind returns a function
+        context1.fn(...arg, ...newArg);
+    }
+}
+const fn1 = greet.myBind(person, 'jsr');
+fn1();   // Satya hello jsr
+
+const fn2 = greet.myBind(person2);
+fn2('jaipur'); // Rajan hello jaipur

@@ -211,6 +211,10 @@ console.log(refWraper(2,3));//cached value did not run the fn
 console.log(refWraper(3,3));
 
 
+
+
+
+
 function memo(func) {
     let cache = new Map();
 

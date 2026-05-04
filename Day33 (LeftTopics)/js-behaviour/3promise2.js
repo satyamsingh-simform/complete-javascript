@@ -26,9 +26,7 @@ Returns AggregateError
 ✅ Behavior
 Waits for ALL promises (resolve OR reject)
 📌 Output
-
 Array of objects:
-
 [
   { status: "fulfilled", value: ... },
   { status: "rejected", reason: ... }
@@ -72,7 +70,6 @@ Promise.any([promise_1, promise_2, promise_3])
 
 
 // settling a promise = fulfilling(resolve) + rejecting
-
 Promise.allSettled([promise_1, promise_2, promise_3])
 .then((result) => {
     console.log(result);

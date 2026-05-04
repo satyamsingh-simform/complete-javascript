@@ -4,6 +4,10 @@
     -Canceling with clearTimeout
         -A call to setTimeout returns a “timer identifier” timerId that we can use to cancel the execution.
 */
+// function func(a,b){
+//     console.log(`${a}  ${b}`);
+// }
+// setTimeout(func,2000,'sat','ya');//Pass a function, but don’t run it//doesn’t work, because setTimeout expects a reference to a function
 
 /*case1
 setTimeout(()=>{
@@ -14,15 +18,10 @@ setTimeout(()=>{
 function sayHi(){
   console.log('Hello');
 }
-setTimeout(sayHi,1000)
+// setTimeout(sayHi,1000);
 
 
-function func(a,b){
-    console.log(`${a}  ${b}`);
-}
-setTimeout(func,2000,'sat','ya');//Pass a function, but don’t run it//doesn’t work, because setTimeout expects a reference to a function
 
 const timerId= setTimeout(sayHi,3000);
 clearTimeout(timerId);
-
 console.log(timerId);

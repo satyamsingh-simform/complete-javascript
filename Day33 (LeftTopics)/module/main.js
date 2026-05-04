@@ -3,8 +3,8 @@
 console.log('hello how are you');
 
 // import {sum,sub} from './cal.js'; //
-import {sum as add, sub as minu} from './cal.js'
-import myName from "./sayFn.js";
+import {sum as add, sub as minu} from './cal.js'  //alise
+import myName from "./sayFn.js"; //default export so can be imported by any name bcz default export ensure only one fn export
 
 
 // console.log(sum(2,5));
@@ -25,7 +25,7 @@ console.log(myName());
 */
 
 
-//DYNAMIC EXPORT
+//DYNAMIC IMPORT-load only when needed
 if(0){
     const{sum,sub}=await import ('./cal.js');
     console.log(sum(2,5));
@@ -35,4 +35,4 @@ else{
     console.log('dynamic export will not work');
 }
 
-//TREE SHAKING
+//TREE SHAKING-remove unused code from your final bundle

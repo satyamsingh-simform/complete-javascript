@@ -289,9 +289,37 @@ lgWasher._showLog(); // Internal Logs: [ 'Cycle Quick Wash completed.' ]
 */
 
 
+/*Multiple inheritance
+    -it is not allowed in JS. 
+    -only single inheritance is allowed.
+    -super keyword is used to call the constructor of parent class
+Mixins
+    -JavaScript does not support multiple inheritance, but mixins allow us to reuse functionality from multiple sources
+     by copying methods into a class.
 
+    -eg
+    const canWalk = {
+        walk() {
+            console.log("Walking...");
+        }
+    };
 
-//9.Extending:to perform inheritance in js extends keyword is used
+    const canEat = {
+      eat() {
+        console.log("Eating...");
+      }
+    };
+
+    class Person {}
+
+    Object.assign(Person.prototype, canWalk, canEat);
+    const p = new Person();
+    p.walk(); // Walking...
+    p.eat();  // Eating...
+*/
+
+//9.To perform inheritance in js extends keyword is used
+//parent class
 class Human{
     species = "Homo Sapiens"; //Public field
 
@@ -314,18 +342,42 @@ class Student extends Human{
     constructor(name, age, grade){
         super(name, age); //super: calls the constructor of parent class(Human)
         this.grade = grade;
+        this.exam=function(){
+            console.log('prepare for your exam');
+        }
     }
     //polymorphism:same method behave differently // Method overriding
     introduce(){
-        console.log(
-          `Hey! I'm ${this.name}, ${this.age} years old and I study in grade ${this.grade}.`
-        );
+        console.log(`Hey! I'm ${this.name}, ${this.age} years old and I study in grade ${this.grade}.`);
     }
     study(){
       console.log(`${this.name} is studying...`);
     }
 }
 
+const s1=new Student('satya',17,'10th');
+console.log(s1);
+/*
+Student {
+  species: 'Homo Sapiens (Student)',
+  name: 'satya',
+  age: 17,
+  grade: '10th'
+  //no method like study or sleep shows here bcz there are out of constructor there are kept in class prototype so that for each obj same fn can be reused
+}
+Student {
+  species: 'Homo Sapiens (Student)',
+  name: 'satya',
+  age: 17,
+  grade: '10th',
+  exam: [Function (anonymous)] //now added exam fn in constructor so for each obj this fn will be created
+}
+*/
+console.log(s1.age);
+
+
+
+/*
 // Subclass: Teacher
 class Teacher extends Human{
     constructor(name, age, subject){
@@ -352,3 +404,4 @@ bob.sleep();// "Bob is sleeping."      // Inherited from Human
 
 console.log(alice.species); // "Homo Sapiens (Student)"
 console.log(bob.species);   // "Homo Sapiens" (inherited from Human)
+*/

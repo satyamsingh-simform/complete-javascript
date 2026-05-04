@@ -5,12 +5,24 @@
 */
 
 
-function add(a){
+// function add(a){
+//     return function(b){
+//         return function(c){
+//             return a+b+c;
+//         }
+//     }
+// }
+
+// console.log(add(2)(3)(6));
+
+
+function sum(a){
     return function(b){
         return function(c){
-            return a+b+c;
+            console.log(a+b+c);
+            return 'done'
         }
     }
 }
-
-console.log(add(2)(3)(6));
+console.log(sum(10));//[Function (anonymous)]
+console.log(sum(10)(20)(30));
