@@ -6,7 +6,7 @@ function flatArray(arr){
 
         if(Array.isArray(value)){
             let flat=flatArray(value);
-            res=res.concat(flat);
+            res.push(...flat);
         } 
         else{
             res.push(value);
@@ -15,3 +15,4 @@ function flatArray(arr){
     return res;
 }
 console.log(flatArray([1,[2,3],[4,[5,6]],7]));
+

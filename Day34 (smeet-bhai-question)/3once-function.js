@@ -22,6 +22,18 @@ How do you know rest vs spread?
     -If ... is used in function calls, arrays, or objects it is the spread operator that expands values.
 */
 
+function once(fun){
+  let called=false;
+  return function(){
+    if(!called){
+      called=true;
+      fun();
+    }
+  }
+}
+
+let callOnce=onec();
+callOnce();
 
 function Once(fn, turn){
   let called=1;

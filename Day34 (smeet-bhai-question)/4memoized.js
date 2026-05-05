@@ -201,7 +201,7 @@ function memo(func){
 
 let refWraper=memo((...arg)=>{//rest
     let result=0;
-    for(let {key} of arg)
+    for(let key of arg)
         result=result+key;
     return result;
 });

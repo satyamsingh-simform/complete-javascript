@@ -1,13 +1,18 @@
 
 
-// Q25)
-var a3 = 10;
-(function () {
- console.log(a3);//10
- if (true) {
-  console.log(a3);//error
-  let a3 = 20;      
-  console.log(a3);
- }
- console.log(a3);
-})();
+function memo(fun){
+  return function(...args){
+    fun(...args)
+  }
+}
+
+function expensiveCal(...args){
+  let sum=0;
+  for(let val of args){
+    sum=sum+val;
+  }
+  console.log(sum);
+}
+
+let sumCal=memo(expensiveCal);
+sumCal(1,2,3,4);

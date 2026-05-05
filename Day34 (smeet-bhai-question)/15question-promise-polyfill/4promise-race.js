@@ -48,43 +48,48 @@ const f3=()=>{
 
 
 //CUSTOM PROMISE.RACE
-Promise.myPromiseRace=function(PromiseArr){
-    return new Promise((resolve,reject)=>{
-        if(!Array.isArray(PromiseArr)){
-            reject(new Error('not a array'));
-            return;
-        }
-        let n=PromiseArr.length;
-        if(n==0){
-            resolve();
-            return;
-        }
-        /*below 72 line is same as doing this
-            Promise.resolve(promise)
-                .then((value) => {
-                    resolve(value);
-                })
-                .catch((error) => {
-                    reject(error);
-                });
-        */
-        PromiseArr.forEach((promise,index)=>{
-            return Promise.resolve(promise)
-                .then(resolve)  //“When this promise resolves → call outer resolve with same value”
-                .catch(reject)
-        })
-    })
+// Promise.myPromiseRace=function(PromiseArr){
+//     return new Promise((resolve,reject)=>{
+//         if(!Array.isArray(PromiseArr)){
+//             reject(new Error('not a array'));
+//             return;
+//         }
+//         let n=PromiseArr.length;
+//         if(n==0){
+//             resolve();
+//             return;
+//         }
+//         /*below 72 line is same as doing this
+//             Promise.resolve(promise)
+//                 .then((value) => {
+//                     resolve(value);
+//                 })
+//                 .catch((error) => {
+//                     reject(error);
+//                 });
+//         */
+//         PromiseArr.forEach((promise,index)=>{
+//             return Promise.resolve(promise)
+//                 .then(resolve)  //“When this promise resolves → call outer resolve with same value”
+//                 .catch(reject)
+//         })
+//     })
     
 
-}
+// }
 
-// Promise.race([f1(),f2(),f3()])
-// .then((res)=>{
-//     console.log(res);
-// })
-// .catch((err)=>{
-//     console.log(err);
-// })
+Promise.myPromiseRace=function(arrP){
+    return new Promise((resolve,reject)=>{
+        if(arrP.length===0){
+            reject();
+        }
+        arrP.forEach((p)=>{
+            Promise.resolve(p)
+                .then((val)=>resolve(val))
+                .catch((err)=reject(err))
+        })
+    })
+}
 
 
 Promise.myPromiseRace([f1(),f2(),f3()])

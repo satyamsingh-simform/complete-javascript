@@ -6,6 +6,13 @@
 
 // const anotherCounter = createCounter();
 // anotherCounter(); // 1
+function counter(){
+  let counter=0;
+  return function(){
+    counter++
+    console.log(counter);
+  }
+}
 
 function createCounter(){
     let value=0;
